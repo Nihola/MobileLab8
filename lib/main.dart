@@ -1,42 +1,68 @@
 import 'package:flutter/material.dart';
+import 'partA.dart';
+import 'partB.dart';
+import 'partC.dart';
+import 'partD.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Flutter Tasks',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
+      appBar: AppBar(title: Text('Flutter Task Hub')),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('Click for Part A '),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => PartAScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Part B – SQLite Notes'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => PartBScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Part C'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => PartCScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Part D'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => PartDScreen()),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
